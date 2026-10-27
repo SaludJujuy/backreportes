@@ -13,6 +13,12 @@ class Conrolador_Region extends Controller
         return response()->json($regiones);
     }
 
+    public function listarRegionesParaFiltro()
+    {
+        $regiones = Region::listarRegionesParaFiltro();
+        return response()->json($regiones);
+    }
+
     public function obtenerRegion(int $id)
     {
         $region = Region::listarRegionPorId($id);

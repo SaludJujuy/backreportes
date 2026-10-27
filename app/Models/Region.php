@@ -19,6 +19,12 @@ class Region extends Model
         return $lista;
     }
 
+    public static function listarRegionesParaFiltro(){
+        $lista = Region::select('localidad','codigo_postal')
+        ->get();
+        return $lista;
+    }
+
     public static function listarRegionPorId(int $id){
         $region = Region::select('id','pais','provincia','localidad','codigo_postal')
         ->where('id',$id)

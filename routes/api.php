@@ -45,6 +45,7 @@ Route::post('/personas/importar', [Conrolador_Persona::class, 'importar']);
 
 // Rutas para la gestión de regiones
 Route::get('/regiones', [Conrolador_Region::class, 'listarRegiones']);
+Route::get('/regiones/filtro', [Conrolador_Region::class, 'listarRegionesParaFiltro']);
 Route::get('/regiones/{id}', [Conrolador_Region::class, 'obtenerRegion']);
 Route::post('/regiones', [Conrolador_Region::class, 'crearRegion']);
 Route::put('/regiones/{id}', [Conrolador_Region::class, 'actualizarRegion']);
