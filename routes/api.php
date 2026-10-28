@@ -16,6 +16,7 @@ Route::get('/user', function (Request $request) {
 
 // Rutas para la gestión de empresas
 Route::get('/empresas', [Controlador_Empresa::class, 'listarEmpresas']);
+Route::get('/empresas/filtro', [Controlador_Empresa::class, 'listarEmpresasParaFiltro']);
 Route::get('/empresas/{id}', [Controlador_Empresa::class, 'obtenerEmpresa']);
 Route::post('/empresas', [Controlador_Empresa::class, 'crearEmpresa']);
 Route::put('/empresas/{id}', [Controlador_Empresa::class, 'actualizarEmpresa']);
@@ -23,6 +24,7 @@ Route::delete('/empresas/{id}', [Controlador_Empresa::class, 'eliminarEmpresa'])
 
 // Rutas para la gestión de obras sociales
 Route::get('/obras-sociales', [Conrolador_ObraSocial::class, 'listarObraSocial']);
+Route::get('/obras-sociales/filtro', [Conrolador_ObraSocial::class, 'listarObraSocialParaFiltro']);
 Route::get('/obras-sociales/{id}', [Conrolador_ObraSocial::class, 'obtenerObraSocial']);
 Route::post('/obras-sociales', [Conrolador_ObraSocial::class, 'crearObraSocial']);
 Route::put('/obras-sociales/{id}', [Conrolador_ObraSocial::class, 'actualizarObraSocial']);

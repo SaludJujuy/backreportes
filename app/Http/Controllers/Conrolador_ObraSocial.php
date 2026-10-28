@@ -13,6 +13,12 @@ class Conrolador_ObraSocial extends Controller
         return response()->json($obra_social);
     }
 
+    public function listarObraSocialParaFiltro()
+    {
+        $obra_social = ObraSocial::listarObraSocialParaFiltro();
+        return response()->json($obra_social);
+    }
+
     public function obtenerObraSocial(int $id)
     {
         $obra_social = ObraSocial::listarObraSocialPorId($id);

@@ -17,6 +17,12 @@ class Empresa extends Model
         return $lista;
     }
 
+    public static function listarEmpresaParaFiltro(){
+        $lista = Empresa::select('cuit','razon_social')
+        ->get();
+        return $lista;
+    }
+
     public static function listarEmpresaPorId(int $id){
         $empresa = Empresa::select('id','cuit','razon_social')
         ->where('id',$id)

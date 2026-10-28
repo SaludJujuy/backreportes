@@ -17,6 +17,12 @@ class ObraSocial extends Model
         return $lista;
     }
 
+    public static function listarObraSocialParaFiltro(){
+        $lista = ObraSocial::select('siglas')
+        ->get();
+        return $lista;
+    }
+
     public static function listarObraSocialPorId(int $id){
         $obra_social = ObraSocial::select('id','razon_social','siglas')
         ->where('id',$id)

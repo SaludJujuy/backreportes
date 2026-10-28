@@ -13,7 +13,13 @@ class Controlador_Empresa extends Controller
         return response()->json($empresas);
     }
 
-    public function obtenerEmpresa($id)
+    public function listarEmpresasParaFiltro()
+    {
+        $empresas = Empresa::listarEmpresaParaFiltro();
+        return response()->json($empresas);
+    }
+
+    public function obtenerEmpresa(int $id)
     {
         $empresa = Empresa::listarEmpresaPorId($id);
         if ($empresa) {
