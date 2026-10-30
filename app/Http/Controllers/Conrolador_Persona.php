@@ -553,4 +553,61 @@ class Conrolador_Persona extends Controller
             );
         }
     }
+
+    public function listarSexos()
+    {
+        try {
+
+            $sexos =
+                Persona::listarSexos();
+
+            return response()->json(
+                $sexos,
+                200
+            );
+
+        } catch (\Throwable $e) {
+
+            return response()->json(
+                [
+                    'message' =>
+                        'No fue posible obtener los sexos.',
+
+                    'error' =>
+                        $e->getMessage()
+                ],
+                500
+            );
+
+        }
+    }
+    public function listarPersonasPorSexo(string $sexo)
+    {
+        try {
+
+            $personas =
+                Persona::listarPersonasPorSexo(
+                    $sexo
+                );
+
+            return response()->json(
+                $personas,
+                200
+            );
+
+        } catch (\Throwable $e) {
+
+            return response()->json(
+                [
+                    'message' =>
+                        'No fue posible obtener las personas.',
+
+                    'error' =>
+                        $e->getMessage()
+                ],
+                500
+            );
+
+        }
+    }
 }

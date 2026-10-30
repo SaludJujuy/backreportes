@@ -44,6 +44,8 @@ Route::post('/personas', [Conrolador_Persona::class, 'crearPersona']);
 Route::put('/personas/{id}', [Conrolador_Persona::class, 'actualizarPersona']);
 Route::delete('/personas/{id}', [Conrolador_Persona::class, 'eliminarPersona']);
 Route::post('/personas/importar', [Conrolador_Persona::class, 'importar']);
+Route::get('/personas/sexos',[Conrolador_Persona::class,'listarSexos']);
+Route::get('/personas/sexo/{sexo}',[Conrolador_Persona::class,'listarPersonasPorSexo']);
 
 // Rutas para la gestión de regiones
 Route::get('/regiones', [Conrolador_Region::class, 'listarRegiones']);

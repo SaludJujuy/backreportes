@@ -169,4 +169,87 @@ class Persona extends Model
         }
         return false;
     }
+
+    public static function listarSexos()
+    {
+        return Persona::select('sexo')
+            ->whereNotNull('sexo')
+            ->where('sexo', '<>', '')
+            ->distinct()
+            ->orderBy('sexo')
+            ->get();
+    }
+
+
+    public static function listarPersonasPorSexo(string $sexo)
+    {
+        return Persona::select(
+                'personas.id',
+                'personas.cuil',
+                'personas.dni',
+                'personas.apellido',
+                'personas.nombre',
+                'personas.fecha_nacimiento',
+                'personas.edad',
+                'personas.telefono',
+                'personas.email',
+                'personas.direccion as domicilio',
+                'personas.sexo',
+
+                'personas.obra_social_id',
+                'personas.localidad_id',
+                'personas.relacion_laboral_id',
+                'personas.empresa_id',
+
+                'obra_socials.razon_social as obra_social',
+                'regions.localidad as localidad',
+                'relacion_laborals.nombre as relacion_laboral',
+                'empresas.razon_social as empresa'
+            )
+
+            ->leftJoin(
+                'obra_socials',
+                'obra_socials.id',
+                '=',
+                'personas.obra_social_id'
+            )
+
+            ->leftJoin(
+                'regions',
+                'regions.id',
+                '=',
+                'personas.localidad_id'
+            )
+
+            ->leftJoin(
+                'relacion_laborals',
+                'relacion_laborals.id',
+                '=',
+                'personas.relacion_laboral_id'
+            )
+
+            ->leftJoin(
+                'empresas',
+                'empresas.id',
+                '=',
+                'personas.empresa_id'
+            )
+
+            ->where(
+                'personas.sexo',
+                $sexo
+            )
+
+            ->orderBy(
+                'personas.apellido',
+                'asc'
+            )
+
+            ->orderBy(
+                'personas.nombre',
+                'asc'
+            )
+
+            ->get();
+    }
 }
