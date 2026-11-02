@@ -50,23 +50,47 @@ class User extends Authenticatable
     public static function listarUsuarios()
     {
         return self::select(
-            'id',
-            'name',
-            'email',
-            'permiso_id'
-        )->get();
+                'users.id',
+                'users.name',
+                'users.email',
+                'users.permiso_id',
+                'permisos.nivel as nivel',
+                'permisos.nombre as permiso'
+            )
+            ->leftJoin(
+                'permisos',
+                'permisos.id',
+                '=',
+                'users.permiso_id'
+            )
+            ->orderBy(
+                'users.name',
+                'asc'
+            )
+            ->get();
     }
 
     public static function obtenerUsuario(int $id)
     {
         return self::select(
-            'id',
-            'name',
-            'email',
-            'permiso_id'
-        )
-        ->where('id', $id)
-        ->first();
+                'users.id',
+                'users.name',
+                'users.email',
+                'users.permiso_id',
+                'permisos.nivel as nivel',
+                'permisos.nombre as permiso'
+            )
+            ->leftJoin(
+                'permisos',
+                'permisos.id',
+                '=',
+                'users.permiso_id'
+            )
+            ->where(
+                'users.id',
+                $id
+            )
+            ->first();
     }
 
     public static function crearUsuario(array $data)
